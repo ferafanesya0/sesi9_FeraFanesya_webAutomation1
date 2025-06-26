@@ -34,4 +34,15 @@ describe('SauceDemo Automation', function () {
     const title = await driver.getTitle();
     assert.strictEqual(title, 'Swag Labs');
   });
+    it('Urutkan produk dari A to Z', async function () {
+      await loginSauceDemo(); // login ulang agar DOM segar
+
+      const option1 = await driver.wait(
+        until.elementLocated(By.xpath('//*[@id="header_container"]/div[2]/div/span/select/option[1]')),
+        10000
+      );
+
+      const optionText = await option1.getText();
+      assert.strictEqual(optionText, 'Name (A to Z)');
+    });
 });
