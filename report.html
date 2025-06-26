@@ -553,27 +553,39 @@ body {
                     <li><span id="toggle-passes" class="toggle-passes">show failures only</span></li>
                 </ul>
                 <ul class="mocha-stats">
-                    <li class="passes">passes: <em>1</em></li>
+                    <li class="passes">passes: <em>3</em></li>
                     <li class="pending">pending: <em>0</em></li>
                     <li class="failures">failures: <em>0</em></li>
-                    <li class="duration">duration: <em>3s</em></li>
+                    <li class="duration">duration: <em>9.6s</em></li>
                 </ul>
             </div>
-            <ul id="report"><li class="suite"><h1>Google Search Test</h1><ul><li class="test pass slow"><h2>Visit SauceDemo dan cek page title<span class="duration">3047ms</span></h2><pre><code>async function () {
+            <ul id="report"><li class="suite"><h1>SauceDemo Automation</h1><ul><li class="test pass slow"><h2>Sukses Login<span class="duration">1050ms</span></h2><pre><code>async function () {
+    await loginSauceDemo();
+    const title = await driver.getTitle();
+    assert.strictEqual(title, &#x27;Swag Labs&#x27;);
+  }</code></pre></li><li class="test pass slow"><h2>Urutkan produk dari A to Z<span class="duration">367ms</span></h2><pre><code>async function () {
+      await loginSauceDemo(); // login ulang agar DOM segar
+      const option1 = await driver.wait(
+        until.elementLocated(By.xpath(&#x27;//*[@id=&#x22;header_container&#x22;]/div[2]/div/span/select/option[1]&#x27;)),
+        10000
+      );
+      const optionText = await option1.getText();
+      assert.strictEqual(optionText, &#x27;Name (A to Z)&#x27;);
+    }</code></pre></li></ul></li><li class="suite"><h1>Google Search Test</h1><ul><li class="test pass slow"><h2>Visit SauceDemo dan cek page title<span class="duration">3679ms</span></h2><pre><code>async function () {
     driver = await new Builder().forBrowser(&#x27;chrome&#x27;).build();
     await driver.get(&#x27;https://www.saucedemo.com&#x27;);
-//    let inputUsername = await driver.findElement(By.css(&#x27;[data-test=&#x22;username&#x22;]&#x27;));
-//    let inputPassword = await driver.findElement(By.xpath(&#x27;//*[@data-test=&#x22;password&#x22;]&#x27;));
-//    let buttonLogin = await driver.findElement(By.className(&#x27;submit-button btn_action&#x27;));
-//
-//    await inputUsername.sendKeys(&#x27;standard_user&#x27;);
-//    await inputPassword.sendKeys(&#x27;secret_sauce&#x27;);
-//    await buttonLogin.click();
+    let inputUsername = await driver.findElement(By.css(&#x27;[data-test=&#x22;username&#x22;]&#x27;));
+    let inputPassword = await driver.findElement(By.xpath(&#x27;//*[@data-test=&#x22;password&#x22;]&#x27;));
+    let buttonLogin = await driver.findElement(By.className(&#x27;submit-button btn_action&#x27;));
+    await inputUsername.sendKeys(&#x27;standard_user&#x27;);
+    await inputPassword.sendKeys(&#x27;secret_sauce&#x27;);
+    await buttonLogin.click();
+//await driver.quit();
 //    const   title = await driver.getTitle();
 //    assert.strictEqual(title, &#x27;Swag Labs&#x27;);
-    let buttonLogin = await driver.findElement(By.className(&#x27;submit-button btn_action&#x27;));
-    const isButtonTrue = await buttonLogin.isDisplayed();
-    assert.strictEqual(isButtonTrue, true)
+//    let buttonLogin = await driver.findElement(By.className(&#x27;submit-button btn_action&#x27;));
+//    const isButtonTrue = await buttonLogin.isDisplayed();
+//    assert.strictEqual(isButtonTrue, true)
 //    const apakahCheckboxActive = await buttonLogin.isSelected();
 //    assert.strictEqual(apakahCheckboxActive, true)
     await driver.quit();
