@@ -7,12 +7,19 @@ describe('SauceDemo Automation', function () {
   this.timeout(30000);
 
   before(async function () {
+    // Untuk menjalankan browser sekali sebelum semua test
     driver = await new Builder().forBrowser('firefox').build();
   });
 
   after(async function () {
+   // Untuk tutup browser setelah semua test selesai
     await driver.quit();
   });
+
+   beforeEach(async function () {
+      // Untuk melakukan login ulang sebelum setiap test
+      await loginSauceDemo();
+    });
 
   async function loginSauceDemo() {
     await driver.get('https://www.saucedemo.com');
