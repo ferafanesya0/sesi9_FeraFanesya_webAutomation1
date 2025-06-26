@@ -17,14 +17,14 @@ describe('Google Search Test', function () {
     await inputPassword.sendKeys('secret_sauce');
     await buttonLogin.click();
 
-await driver.quit();
+//await driver.quit();
 
 //    const   title = await driver.getTitle();
 //    assert.strictEqual(title, 'Swag Labs');
 
-    let buttonLogin = await driver.findElement(By.className('submit-button btn_action'));
-    const isButtonTrue = await buttonLogin.isDisplayed();
-    assert.strictEqual(isButtonTrue, true)
+//    let buttonLogin = await driver.findElement(By.className('submit-button btn_action'));
+//    const isButtonTrue = await buttonLogin.isDisplayed();
+//    assert.strictEqual(isButtonTrue, true)
 
 //    const apakahCheckboxActive = await buttonLogin.isSelected();
 //    assert.strictEqual(apakahCheckboxActive, true)

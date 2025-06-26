@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Selenium WebDriver tests using Mocha with Mochawesome reports",
   "scripts": {
-    "test": "mocha tests/test-sauce.js --recursive --timeout 60000",
+    "test": "mocha tests --recursive --timeout 60000",
     "test_sesi9": "mocha tests/sesi9_FeraFanesya_webAutomation1.js --recursive --timeout 60000",
     "jalanin-mochawesome": "mocha tests --recursive --timeout 60000 --reporter mochawesome",
     "jalanin-simple-html": "mocha tests --recursive --timeout 60000 --reporter mocha-simple-html-reporter --reporter-options output=report.html"
